@@ -1,0 +1,49 @@
+-- One row per observed shot. Sessions are derived (not stored): a span
+-- of monotonically-increasing shot_numbers; a shot_number going down
+-- marks a new derived session.
+
+-- IF NOT EXISTS: the desktop driver runs Schema.create unconditionally on
+-- open, and createDatabase's dev-grade schema guard recreates after a DROP.
+CREATE TABLE IF NOT EXISTS shot (
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    shot_number INTEGER NOT NULL,
+    mode TEXT,
+    score TEXT,
+    coords_x TEXT,
+    coords_y TEXT,
+    coords_x_direction TEXT,
+    coords_y_direction TEXT,
+    measurement_score REAL,
+    measurement_offset_x_rings REAL,
+    measurement_offset_y_rings REAL,
+    measurement_distance_rings REAL,
+    first_seen_at INTEGER NOT NULL,
+    last_updated_at INTEGER NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS shot_first_seen_at_idx ON shot(first_seen_at);
+
+insertShot:
+INSERT INTO shot (
+    shot_number, mode, score,
+    coords_x, coords_y, coords_x_direction, coords_y_direction,
+    measurement_score, measurement_offset_x_rings, measurement_offset_y_rings, measurement_distance_rings,
+    first_seen_at, last_updated_at
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+lastInsertedId:
+SELECT last_insert_rowid();
+
+updateShotById:
+UPDATE shot SET
+    score = ?,
+    coords_x = ?, coords_y = ?, coords_x_direction = ?, coords_y_direction = ?,
+    measurement_score = ?, measurement_offset_x_rings = ?, measurement_offset_y_rings = ?, measurement_distance_rings = ?,
+    last_updated_at = ?
+WHERE id = ?;
+
+selectAll:
+SELECT * FROM shot ORDER BY first_seen_at ASC;
+
+selectLatest:
+SELECT * FROM shot ORDER BY first_seen_at DESC LIMIT 1;

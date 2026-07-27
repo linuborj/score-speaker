@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 96" width="400" height="96" role="img" aria-label="Score Speaker">
+  <g transform="translate(6,10.5) scale(0.75)">
+  <circle cx="45" cy="50" r="26" fill="none" stroke="#faf8f4" stroke-width="4.5"></circle>
+  <circle cx="45" cy="50" r="8" fill="#1fc7dd"></circle>
+  <path d="M71.9 23.1 A38 38 0 0 1 71.9 76.9" fill="none" stroke="#1fc7dd" stroke-width="4.5" stroke-linecap="round"></path>
+  <path d="M78.9 16.1 A48 48 0 0 1 78.9 83.9" fill="none" stroke="#1fc7dd" stroke-width="4.5" stroke-linecap="round"></path>
+  </g>
+  <text x="92" y="60" font-family="Roboto, &#39;Roboto&#39;, system-ui, sans-serif" font-size="42" textLength="290" lengthAdjust="spacingAndGlyphs">
+    <tspan fill="#faf8f4" font-weight="500">Score </tspan><tspan fill="#1fc7dd" font-weight="500">Speaker</tspan>
+  </text>
+</svg>

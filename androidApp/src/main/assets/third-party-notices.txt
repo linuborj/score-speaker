@@ -1,0 +1,26 @@
+Score Speaker bundles the following open-source software.
+
+All of the libraries below are licensed under the Apache License,
+Version 2.0. A copy of the license is available at:
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Kotlin standard library and kotlinx libraries
+    Copyright 2010–2026 JetBrains s.r.o. and Kotlin Programming
+    Language contributors.
+
+Jetpack Compose and AndroidX libraries
+    (activity, core, camera/CameraX, lifecycle, and related artifacts)
+    Copyright The Android Open Source Project.
+
+Compose Multiplatform
+    Copyright JetBrains s.r.o.
+
+SQLDelight
+    Copyright 2016 Square, Inc.
+
+OpenCV
+    Copyright OpenCV team and contributors.
+    Includes libc++ from the LLVM Project, licensed under the
+    Apache License 2.0 with LLVM Exceptions
+    (https://llvm.org/LICENSE.txt).

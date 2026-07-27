@@ -1,0 +1,38 @@
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+local.properties
+
+# Release signing — never committed
+keystore.properties
+*.jks
+*.keystore
+
+# Kotlin
+*.class
+.kotlin/
+
+# JVM crash dumps
+hs_err_pid*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Debug frames
+debug_frames/
+
+# The capture corpus (real range photos) lives OUTSIDE the repo —
+# ~/score-speaker-corpus or $SCORE_SPEAKER_CORPUS. test-data/ holds only
+# the bundled clean assets (masked template + glyph alphabet); any case
+# dir that strays in here stays untracked.
+desktopApp/test-data/*/
+!desktopApp/test-data/glyphs/
+
+# Claude workbench files — local only
+.claude/

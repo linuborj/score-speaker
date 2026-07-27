@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Camera permissions. The rear camera IS the app — required="true"
+         lets Play filter out devices that lack one (front-only tablets
+         would otherwise crash at bind). Autofocus stays optional: fixed
+         focus degrades reading quality, it doesn't break the app. -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+
+    <!-- Nothing in the app touches the network; keep the removal as a
+         belt so no future dependency can quietly merge INTERNET back in
+         and undermine the Play Data Safety form's offline claim. -->
+    <uses-permission android:name="android.permission.INTERNET" tools:node="remove" />
+
+    <application
+        android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_rules"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@android:style/Theme.DeviceDefault.NoActionBar">
+
+        <!-- configChanges keeps rotation from recreating the activity (and
+             tearing down the camera pipeline); Compose re-lays-out on the
+             size change. -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:configChanges="orientation|screenSize">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>

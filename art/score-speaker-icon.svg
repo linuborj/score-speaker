@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108" width="216" height="216" role="img" aria-label="Score Speaker app icon">
+  <rect width="108" height="108" rx="24" fill="#0f191c"></rect>
+  <g transform="translate(17.84,21.71) scale(0.6458)">
+  <circle cx="45" cy="50" r="26" fill="none" stroke="#faf8f4" stroke-width="4.5"></circle>
+  <circle cx="45" cy="50" r="8" fill="#1fc7dd"></circle>
+  <path d="M71.9 23.1 A38 38 0 0 1 71.9 76.9" fill="none" stroke="#1fc7dd" stroke-width="4.5" stroke-linecap="round"></path>
+  <path d="M78.9 16.1 A48 48 0 0 1 78.9 83.9" fill="none" stroke="#1fc7dd" stroke-width="4.5" stroke-linecap="round"></path>
+  </g>
+</svg>

@@ -1,0 +1,38 @@
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  desktop-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # The suite needs the detection template and the glyph alphabet
+      # (~4 MB). The photo corpus lives outside the repo entirely
+      # ($SCORE_SPEAKER_CORPUS / ~/score-speaker-corpus) — absent here,
+      # so corpus-dependent tests skip via their findAll()/assumeTrue()
+      # guards and everything else runs for real.
+      - name: Pull LFS test assets
+        run: git lfs pull --include="desktopApp/test-data/**"
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Run desktop test suite
+        run: ./gradlew :desktopApp:jvmTest
+
+      - name: Upload test reports
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: desktopApp/build/reports/tests/jvmTest/

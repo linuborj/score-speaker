@@ -1,0 +1,116 @@
+/* Score Speaker site — self-contained, no build step.
+   Accessibility first: the app's audience includes blind and low-vision
+   shooters, so this page must hold up under screen readers, zoom, and
+   high-contrast settings. Semantic HTML does most of the work; this file
+   only handles presentation. */
+
+:root {
+  --bg: #faf8f4;
+  --surface: #ffffff;
+  --ink: #1c2126;
+  --ink-mid: #4c555e;
+  --line: #e2ddd4;
+  --accent: #0c8fa1;      /* the lockup's light-mode cyan (AA on this bg) */
+  --accent-ink: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14181c;
+    --surface: #1c2126;
+    --ink: #eef1f4;
+    --ink-mid: #a8b2bb;
+    --line: #2c343c;
+    --accent: #1fc7dd;
+    --accent-ink: #06272c;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { font-size: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+}
+
+main {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 4rem;
+}
+
+header.site {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.3rem;
+  padding: 2.5rem 0 1.5rem;
+}
+
+header.site p { margin: 0; }
+
+h1 {
+  font-size: 1.9rem;
+  line-height: 1.2;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin: 2.2rem 0 0.6rem;
+}
+
+h3 {
+  font-size: 1.05rem;
+  margin: 1.6rem 0 0.4rem;
+}
+
+/* Anchor targets land below the viewport edge, not glued to it. */
+section[id] { scroll-margin-top: 1rem; }
+
+p.lede {
+  font-size: 1.15rem;
+  color: var(--ink-mid);
+  margin-top: 0.4rem;
+}
+
+a {
+  color: var(--accent);
+  text-underline-offset: 0.15em;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+ul { padding-left: 1.2rem; }
+li { margin: 0.35rem 0; }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.muted { color: var(--ink-mid); }
+
+footer {
+  margin-top: 3.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  color: var(--ink-mid);
+  font-size: 0.95rem;
+}
+
+nav.crumbs { margin-top: 2rem; font-size: 0.95rem; }

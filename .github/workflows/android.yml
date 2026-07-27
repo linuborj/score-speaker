@@ -1,0 +1,45 @@
+name: Android
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # The APK bundles LFS-tracked assets (SIUS template, glyph alphabet);
+      # without this the build would ship LFS pointer files instead of PNGs.
+      # Deliberately NOT `lfs: true` on checkout: that would also pull the
+      # ~340 MB photo corpus on every run and exhaust the LFS bandwidth
+      # quota. The app assets are ~4 MB.
+      - name: Pull LFS assets bundled in the APK
+        run: git lfs pull --include="androidApp/**"
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      # Release is unsigned here by design — the signing config only
+      # activates when keystore.properties exists (see androidApp/build.gradle.kts).
+      - name: Build APKs
+        run: ./gradlew :androidApp:assembleDebug :androidApp:assembleRelease
+
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: scorespeaker-debug
+          path: androidApp/build/outputs/apk/debug/*.apk
+
+      - name: Upload release APK (unsigned)
+        uses: actions/upload-artifact@v4
+        with:
+          name: scorespeaker-release-unsigned
+          path: androidApp/build/outputs/apk/release/*.apk

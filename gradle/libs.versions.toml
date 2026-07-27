@@ -1,0 +1,40 @@
+# Library versions — single source of truth for dependency coordinates.
+# Plugin versions live in gradle.properties (read by settings.gradle.kts's
+# pluginManagement block, which runs before this catalog is available).
+
+[versions]
+kotlinx-coroutines = "1.11.0"
+kotlinx-serialization = "1.11.0"
+sqldelight = "2.3.2"
+androidx-activity-compose = "1.13.0"
+androidx-core = "1.19.0"
+camerax = "1.6.1"
+# Same org.opencv.* API from two distributions: the official Android AAR
+# and the openpnp JVM build. Pinned in lockstep — jvmAndAndroidMain
+# compiles against both, so neither moves alone. OpenCV 5.x exists for
+# Android but openpnp has no 5.x build; both stay 4.9 until it does.
+opencv-android = "4.9.0"
+opencv-jvm = "4.9.0-0"
+filekit = "0.14.2"
+zoomable = "2.13.0"
+junit-jupiter = "6.1.2"
+
+[libraries]
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+sqldelight-runtime = { module = "app.cash.sqldelight:runtime", version.ref = "sqldelight" }
+sqldelight-android-driver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight" }
+sqldelight-sqlite-driver = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqldelight" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity-compose" }
+androidx-core = { module = "androidx.core:core", version.ref = "androidx-core" }
+camerax-core = { module = "androidx.camera:camera-core", version.ref = "camerax" }
+camerax-camera2 = { module = "androidx.camera:camera-camera2", version.ref = "camerax" }
+camerax-lifecycle = { module = "androidx.camera:camera-lifecycle", version.ref = "camerax" }
+camerax-view = { module = "androidx.camera:camera-view", version.ref = "camerax" }
+opencv-android = { module = "org.opencv:opencv", version.ref = "opencv-android" }
+opencv-jvm = { module = "org.openpnp:opencv", version.ref = "opencv-jvm" }
+filekit-core = { module = "io.github.vinceglb:filekit-core", version.ref = "filekit" }
+filekit-dialogs = { module = "io.github.vinceglb:filekit-dialogs", version.ref = "filekit" }
+filekit-dialogs-compose = { module = "io.github.vinceglb:filekit-dialogs-compose", version.ref = "filekit" }
+zoomable = { module = "net.engawapg.lib:zoomable", version.ref = "zoomable" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }

@@ -1,0 +1,44 @@
+name: Site
+
+# Deploys site/ to GitHub Pages via the Actions artifact path — this is
+# what lets the page live in site/ instead of the repo root or /docs
+# (the only two folders the legacy branch-based Pages config can serve).
+#
+# Prerequisites, once the repo is public:
+#   Settings → Pages → Source: "GitHub Actions"  (configure-pages below
+#   attempts to enable this itself; flip it manually if the first run
+#   complains). Until the repo is public, Pages is unavailable on a free
+#   personal account and this workflow will fail — it only triggers on
+#   site/ changes or manual dispatch, so it stays quiet meanwhile.
+
+on:
+  push:
+    branches: [main]
+    paths: [site/**]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4

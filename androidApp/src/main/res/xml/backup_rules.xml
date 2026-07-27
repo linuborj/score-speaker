@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Auto Backup content for API <= 30 (API 31+ uses data_extraction_rules).
+     Explicit include list: the shot-history DB and the settings prefs are
+     the user's data; nothing else in app storage is worth restoring
+     (captures are dev artifacts and live in external files anyway). -->
+<full-backup-content>
+    <include domain="database" path="scorespeaker.db" />
+    <include domain="sharedpref" path="scorespeaker_settings.xml" />
+</full-backup-content>

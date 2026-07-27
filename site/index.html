@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Score Speaker</title>
+<meta name="description" content="Score Speaker is an Android app that reads an electronic shooting target's score display through the camera and announces each shot out loud. Built for visually impaired sport shooters. Everything on-device; no data collected.">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+</head>
+<body>
+<main>
+  <header class="site">
+    <h1>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 96" width="340" height="82" role="img" aria-label="Score Speaker" style="max-width:100%; height:auto;">
+        <g transform="translate(6,10.5) scale(0.75)">
+        <circle cx="45" cy="50" r="26" fill="none" stroke="currentColor" stroke-width="4.5"></circle>
+        <circle cx="45" cy="50" r="8" fill="var(--accent)"></circle>
+        <path d="M71.9 23.1 A38 38 0 0 1 71.9 76.9" fill="none" stroke="var(--accent)" stroke-width="4.5" stroke-linecap="round"></path>
+        <path d="M78.9 16.1 A48 48 0 0 1 78.9 83.9" fill="none" stroke="var(--accent)" stroke-width="4.5" stroke-linecap="round"></path>
+        </g>
+        <text x="92" y="60" font-family="Roboto, system-ui, sans-serif" font-size="42" textLength="290" lengthAdjust="spacingAndGlyphs">
+          <tspan fill="currentColor" font-weight="500">Score </tspan><tspan fill="var(--accent)" font-weight="500">Speaker</tspan>
+        </text>
+      </svg>
+    </h1>
+    <p><a href="https://github.com/linuborj/score-speaker">github.com/linuborj/score-speaker</a></p>
+  </header>
+
+  <p>
+    An Android app that reads an electronic shooting target's score
+    display through the phone's camera and announces each shot out loud —
+    shot number, score, and where the hit landed. Built for sport
+    shooters, especially <strong>visually impaired shooters</strong>.
+  </p>
+
+  <h2>How it works</h2>
+  <ul>
+    <li>A phone on a tripod points at the score display; a sighted helper
+        sets it up once.</li>
+    <li>Each shot is spoken as it lands:
+        <em>“Shot 7, 9 point 8 — 11 o'clock.”</em></li>
+    <li>Shots that miss the target are spoken too, with the direction they
+        went out: <em>“Shot 16, miss — 7 o'clock.”</em></li>
+    <li>Shots are stored on the device: sessions, scores, group plot.</li>
+    <li>Works with TalkBack. Speaks English and Swedish.</li>
+  </ul>
+
+  <div class="card">
+    <h2 style="margin-top:0">Private by construction</h2>
+    <p>
+      Everything runs on the device. No data is collected, and the app
+      does not hold the Android internet permission — it cannot send
+      anything anywhere. <a href="#privacy">Full privacy policy</a>.
+    </p>
+  </div>
+
+  <section id="privacy" aria-labelledby="privacy-title">
+    <h2 id="privacy-title" style="font-size:1.5rem; margin-top:3rem;">Privacy Policy</h2>
+    <p class="muted">Effective date: 2026-07-21</p>
+
+    <p>
+      Score Speaker is an Android app that reads the score display of an
+      electronic shooting target through the phone's camera and announces
+      the results out loud.
+    </p>
+    <p>
+      <strong>The app collects no data and shares no data.</strong> It
+      does not hold the Android <code>INTERNET</code> permission, so the
+      operating system itself prevents it from transmitting anything.
+      There are no accounts, no analytics, no ads, no tracking, and no
+      third-party services; score recognition and speech output run
+      entirely on the device.
+    </p>
+
+    <h3>Camera</h3>
+    <p>
+      The camera is used to see the score display. Frames are analyzed on
+      the device, in memory, and immediately discarded — never saved,
+      never transmitted.
+    </p>
+
+    <h3>Shot history</h3>
+    <p>
+      The scores the app reads are stored in a database on your device so
+      you can browse past sessions. This data never leaves the app's
+      private storage, with one standard exception: Android's automatic
+      device backup includes it in <strong>your own</strong> Google
+      account backup, controlled through your device's backup settings.
+      To delete your shot history, clear the app's data in Android
+      settings or uninstall the app.
+    </p>
+
+    <h3>Contact</h3>
+    <p>
+      Questions about this policy or your data:<br>
+      <strong>Linus Börjesson</strong> —
+      <a href="mailto:linus@linusborjesson.se">linus@linusborjesson.se</a>
+    </p>
+  </section>
+
+  <footer>
+    <p>© Linus Börjesson · <a href="#privacy">Privacy policy</a></p>
+  </footer>
+</main>
+</body>
+</html>

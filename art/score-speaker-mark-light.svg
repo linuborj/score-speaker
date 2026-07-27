@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="17 0 78 100" width="234" height="300" role="img" aria-label="Score Speaker">
+  <circle cx="45" cy="50" r="26" fill="none" stroke="#faf8f4" stroke-width="4.5"></circle>
+  <circle cx="45" cy="50" r="8" fill="#1fc7dd"></circle>
+  <path d="M71.9 23.1 A38 38 0 0 1 71.9 76.9" fill="none" stroke="#1fc7dd" stroke-width="4.5" stroke-linecap="round"></path>
+  <path d="M78.9 16.1 A48 48 0 0 1 78.9 83.9" fill="none" stroke="#1fc7dd" stroke-width="4.5" stroke-linecap="round"></path>
+</svg>

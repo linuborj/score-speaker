@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Backup/transfer rules for API 31+ — same include list as
+     backup_rules.xml: shot history + settings, nothing else. -->
+<data-extraction-rules>
+    <cloud-backup>
+        <include domain="database" path="scorespeaker.db" />
+        <include domain="sharedpref" path="scorespeaker_settings.xml" />
+    </cloud-backup>
+    <device-transfer>
+        <include domain="database" path="scorespeaker.db" />
+        <include domain="sharedpref" path="scorespeaker_settings.xml" />
+    </device-transfer>
+</data-extraction-rules>
